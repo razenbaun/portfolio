@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Проекты{% endblock %}
+{% block content %}
+<section>
+    <h1>Проекты</h1>
+    <div class="h-scroll">
+        {% for project in projects %}
+        <a class="card project-card" href="{{ url_for('project_detail', slug=project.slug) }}">
+            <img src="{{ url_for('static', filename=project.image) }}" alt="{{ project.title }}">
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.short_description }}</p>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

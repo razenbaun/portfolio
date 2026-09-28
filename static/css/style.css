@@ -1,0 +1,51 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    color: #1a1a1a;
+    background: #fafafa;
+}
+
+.navbar {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 1rem 2rem;
+}
+.nav-container { display: flex; justify-content: space-between; align-items: center; }
+.navbar a { color: #fff; text-decoration: none; margin-left: 1.5rem; }
+.logo { font-weight: bold; font-size: 1.2rem; }
+
+main { padding: 2rem; max-width: 1200px; margin: 0 auto; }
+
+/* Горизонтальный скролл для карточек */
+.h-scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    scroll-snap-type: x mandatory;
+}
+.h-scroll::-webkit-scrollbar { height: 8px; }
+.h-scroll::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+
+.card {
+    flex: 0 0 300px;
+    scroll-snap-align: start;
+    background: #fff;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    text-decoration: none;
+    color: inherit;
+    transition: transform .2s;
+}
+.card:hover { transform: translateY(-4px); }
+.card img { width: 100%; border-radius: 8px; }
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: #1a1a1a;
+    color: #fff;
+}
+footer a { color: #fff; margin: 0 .5rem; }
