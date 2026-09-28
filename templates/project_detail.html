@@ -1,9 +1,218 @@
 {% extends "base.html" %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/project.css') }}">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css">
+{% endblock %}
+
 {% block title %}{{ project.title }}{% endblock %}
+
 {% block content %}
 <article class="project-detail">
-    <h1>{{ project.title }}</h1>
-    <img src="{{ url_for('static', filename=project.image) }}" alt="{{ project.title }}">
-    <p>{{ project.description }}</p>
+
+    <!-- ===== HERO ===== -->
+    <header class="project-hero">
+        <a href="{{ url_for('projects') }}" class="back-link">← Все проекты</a>
+        <h1>{{ project.title }}</h1>
+        {% if project.tagline %}
+            <p class="project-tagline">{{ project.tagline }}</p>
+        {% endif %}
+
+        {% if project.badges %}
+            <div class="badges">
+                {% for b in project.badges %}<span class="badge">{{ b }}</span>{% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="project-actions">
+            {% if project.links.github %}
+                <a href="{{ project.links.github }}" target="_blank" rel="noopener" class="btn btn-primary">
+                    GitHub →
+                </a>
+            {% endif %}
+            {% if project.links.maven %}
+                <a href="{{ project.links.maven }}" target="_blank" rel="noopener" class="btn">
+                    Maven Central →
+                </a>
+            {% endif %}
+            {% if project.links.pom %}
+                <button class="btn copy-btn" data-copy="{{ project.links.pom }}">
+                    <span class="copy-label">Скопировать зависимость</span>
+                    <code>{{ project.links.pom }}</code>
+                </button>
+            {% endif %}
+        </div>
+    </header>
+
+    <!-- ===== ПРОБЛЕМА / РЕШЕНИЕ ===== -->
+    {% if project.problem or project.solution %}
+    <section class="project-section two-col">
+        {% if project.problem %}
+        <div>
+            <h2>Проблема</h2>
+            <p>{{ project.problem }}</p>
+        </div>
+        {% endif %}
+        {% if project.solution %}
+        <div>
+            <h2>Решение</h2>
+            <p>{{ project.solution }}</p>
+        </div>
+        {% endif %}
+    </section>
+    {% endif %}
+
+    <!-- ===== ВОЗМОЖНОСТИ ===== -->
+    {% if project.features %}
+    <section class="project-section">
+        <h2>Ключевые возможности</h2>
+        <div class="features-grid">
+            {% for f in project.features %}
+            <div class="feature-card">
+                <div class="feature-icon">{{ f.icon }}</div>
+                <h3>{{ f.title }}</h3>
+                <p>{{ f.text }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- ===== ПРИМЕР КОДА ===== -->
+    {% if project.code_snippet %}
+    <section class="project-section">
+        <h2>Пример использования</h2>
+        <pre class="code-block"><code class="language-{{ project.code_snippet.lang }}">{{ project.code_snippet.code }}</code></pre>
+    </section>
+    {% endif %}
+
+    <!-- ===== АРХИТЕКТУРА ===== -->
+    {% if project.architecture_image %}
+    <section class="project-section">
+        <h2>Архитектура</h2>
+        {% if project.architecture_note %}
+            <p>{{ project.architecture_note }}</p>
+        {% endif %}
+        <img class="architecture-img js-lightbox"
+             src="{{ url_for('static', filename=project.architecture_image) }}"
+             alt="Архитектура {{ project.title }}">
+    </section>
+    {% endif %}
+
+    <!-- ===== ГАЛЕРЕЯ ===== -->
+    {% if project.gallery %}
+    <section class="project-section">
+        <h2>Демонстрация</h2>
+        <div class="gallery-grid">
+            {% for item in project.gallery %}
+            <figure class="gallery-item">
+                <img class="js-lightbox"
+                     src="{{ url_for('static', filename=item.src) }}"
+                     alt="{{ item.caption }}"
+                     loading="lazy">
+                {% if item.caption %}<figcaption>{{ item.caption }}</figcaption>{% endif %}
+            </figure>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- ===== БЕНЧМАРКИ ===== -->
+    {% if project.benchmarks %}
+    <section class="project-section">
+        <h2>Результаты экспериментов</h2>
+        <div class="table-wrap">
+            <table class="benchmarks-table">
+                <thead>
+                    <tr>
+                        <th>Датасет</th>
+                        <th>Модель</th>
+                        <th>MAE</th>
+                        <th>sMAPE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in project.benchmarks %}
+                    <tr class="{% if row.best %}best-row{% endif %}">
+                        <td>{{ row.dataset }}</td>
+                        <td>{{ row.model }}</td>
+                        <td>{{ row.mae }}</td>
+                        <td>{{ row.smape }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% if project.benchmark_note %}
+            <p class="benchmark-note">{{ project.benchmark_note }}</p>
+        {% endif %}
+    </section>
+    {% endif %}
+
+    <!-- ===== СТЕК ===== -->
+    {% if project.tech %}
+    <section class="project-section">
+        <h2>Технологический стек</h2>
+        <div class="tech-chips">
+            {% for t in project.tech %}<span class="chip">{{ t }}</span>{% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- ===== ДАТАСЕТЫ ===== -->
+    {% if project.datasets %}
+    <section class="project-section">
+        <h2>Датасеты</h2>
+        <ul class="datasets-list">
+            {% for d in project.datasets %}
+            <li>
+                <a href="{{ url_for('static', filename=d.path) }}" download>{{ d.name }}</a>
+                <span class="dataset-desc">{{ d.description }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endif %}
+
+    <!-- ===== ROADMAP ===== -->
+    {% if project.roadmap %}
+    <section class="project-section">
+        <h2>Дорожная карта</h2>
+        <ul class="roadmap">
+            {% for r in project.roadmap %}
+            <li class="roadmap-item roadmap-{{ r.status }}">
+                <span class="roadmap-marker"></span>
+                <span>{{ r.text }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endif %}
+
+    <!-- ===== ИСТОЧНИКИ ===== -->
+    {% if project.sources %}
+    <section class="project-section">
+        <h2>Ссылки и источники</h2>
+        <ul class="sources-list">
+            {% for s in project.sources %}
+            <li><a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.label }} ↗</a></li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endif %}
+
 </article>
+
+<div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox-close" aria-label="Закрыть">×</button>
+    <img src="" alt="">
+</div>
+
+{% block extra_scripts %}
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/java.min.js"></script>
+    <script src="{{ url_for('static', filename='js/project.js') }}"></script>
+{% endblock %}
+
 {% endblock %}
