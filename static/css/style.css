@@ -1,6 +1,13 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+html, body {
+    height: 100%;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     font-family: system-ui, -apple-system, sans-serif;
     color: #1a1a1a;
     background: #fafafa;
@@ -15,18 +22,37 @@ body {
 .navbar a { color: #fff; text-decoration: none; margin-left: 1.5rem; }
 .logo { font-weight: bold; font-size: 1.2rem; }
 
-main { padding: 2rem; max-width: 1200px; margin: 0 auto; }
+main {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
 
-/* Горизонтальный скролл для карточек */
+.h-scroll-wrapper {
+    position: relative;
+}
+
 .h-scroll {
     display: flex;
     overflow-x: auto;
     gap: 1.5rem;
     padding: 1rem 0;
     scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    cursor: grab;
 }
-.h-scroll::-webkit-scrollbar { height: 8px; }
-.h-scroll::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+
+.h-scroll::-webkit-scrollbar { display: none; }
+.h-scroll.dragging {
+    cursor: grabbing;
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+}
+.h-scroll.dragging .card { pointer-events: none; }
 
 .card {
     flex: 0 0 300px;
@@ -39,13 +65,73 @@ main { padding: 2rem; max-width: 1200px; margin: 0 auto; }
     color: inherit;
     transition: transform .2s;
 }
+
+.scroll-btn:hover { transform: translateY(-50%) scale(1.08); }
+.scroll-btn:disabled { opacity: 0; pointer-events: none; }
+.scroll-btn.prev { left: -8px; }
+.scroll-btn.next { right: -8px; }
 .card:hover { transform: translateY(-4px); }
 .card img { width: 100%; border-radius: 8px; }
 
+.scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,.15);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #1a1a1a;
+    z-index: 2;
+    transition: opacity .2s, transform .2s;
+}
+
+.h-scroll-wrapper::before,
+.h-scroll-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 40px;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity .25s;
+}
+
+.h-scroll-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, #fafafa, transparent);
+}
+.h-scroll-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, #fafafa, transparent);
+}
+.h-scroll-wrapper.has-left::before  { opacity: 1; }
+.h-scroll-wrapper.has-right::after  { opacity: 1; }
+
 footer {
+    margin-top: auto;
     text-align: center;
     padding: 2rem;
     background: #1a1a1a;
     color: #fff;
 }
 footer a { color: #fff; margin: 0 .5rem; }
+
+.logo img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: 2px solid #fff;
+    transition: transform .2s;
+}
+.logo img:hover { transform: scale(1.05); }

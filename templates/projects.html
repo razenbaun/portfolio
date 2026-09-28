@@ -3,6 +3,8 @@
 {% block content %}
 <section>
     <h1>Проекты</h1>
+    <div class="h-scroll-wrapper">
+    <button class="scroll-btn prev" aria-label="Назад">‹</button>
     <div class="h-scroll">
         {% for project in projects %}
         <a class="card project-card" href="{{ url_for('project_detail', slug=project.slug) }}">
@@ -11,6 +13,8 @@
             <p>{{ project.short_description }}</p>
         </a>
         {% endfor %}
+    </div>
+        <button class="scroll-btn next" aria-label="Вперёд">›</button>
     </div>
 </section>
 {% endblock %}

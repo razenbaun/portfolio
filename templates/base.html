@@ -9,7 +9,9 @@
 <body>
     <header class="navbar">
         <div class="nav-container">
-            <a href="{{ url_for('index') }}" class="logo">АП</a>
+            <a href="{{ url_for('index') }}" class="logo">
+                <img src="{{ url_for('static', filename='images/avatar.jpg') }}" alt="Александр Петрачков">
+            </a>
             <nav>
                 <a href="{{ url_for('index') }}">Главная</a>
                 <a href="{{ url_for('certificates') }}">Сертификаты</a>

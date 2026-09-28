@@ -3,6 +3,8 @@
 {% block content %}
 <section>
     <h1>Сертификаты</h1>
+    <div class="h-scroll-wrapper">
+    <button class="scroll-btn prev" aria-label="Назад">‹</button>
     <div class="h-scroll">
         {% for cert in certificates %}
         <div class="card cert-card">
@@ -15,6 +17,9 @@
             {% endif %}
         </div>
         {% endfor %}
-    </div>
+        </div>
+    <button class="scroll-btn next" aria-label="Вперёд">›</button>
+</div>
+
 </section>
 {% endblock %}
