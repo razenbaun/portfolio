@@ -97,6 +97,13 @@ PROJECT = {
          "caption": "Тестирование API через Postman: ответ с image_url и label"},
     ],
 
+    "videos": [
+        {
+            "title": "Распознавание мебели в реальном времени",
+            "youtube_id": "HNmC1t3lUfM",
+        },
+    ],
+
     "benchmark_columns": ["Модель", "Accuracy", "Precision", "Recall", "F1-score"],
     "benchmarks": [
         {"cells": ["YOLOv5s", "97%", "95.9%", "98.2%", "97.0%"], "best": True},

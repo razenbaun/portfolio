@@ -118,6 +118,28 @@
     </section>
     {% endif %}
 
+    <!-- ===== ВИДЕО ===== -->
+    {% if project.videos %}
+    <section class="project-section">
+        <h2>Видео-демонстрация</h2>
+        <div class="video-grid">
+            {% for v in project.videos %}
+            <figure class="video-item">
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://www.youtube.com/embed/{{ v.youtube_id }}"
+                        title="{{ v.title }}"
+                        loading="lazy"
+                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                {% if v.title %}<figcaption>{{ v.title }}</figcaption>{% endif %}
+            </figure>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
     <!-- ===== БЕНЧМАРКИ ===== -->
     {% if project.benchmarks %}
     <section class="project-section">

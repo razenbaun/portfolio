@@ -88,6 +88,13 @@ PROJECT = {
          "caption": "Запуск демо в IntelliJ IDEA: 4 датасета, вывод метрик в консоль"},
     ],
 
+    "videos": [
+        {
+            "title": "Демонстрация работы JTSML",
+            "youtube_id": "-dxDZmnsma0",
+        },
+    ],
+
     "benchmark_columns": ["Датасет", "Модель", "MAE", "sMAPE"],
     "benchmarks": [
         {"cells": ["Passengers (monthly)", "SARIMA(1,0,1)(1,0,1)₁₂", "21.9", "5.6%"], "best": True},
