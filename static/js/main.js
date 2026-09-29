@@ -16,16 +16,32 @@ document.querySelectorAll(".h-scroll-wrapper").forEach((wrapper) => {
     if (btnNext) btnNext.addEventListener("click", () =>
         scroller.scrollBy({ left: 340, behavior: "smooth" }));
 
-    // Drag-to-scroll
-    let isDown = false, startX = 0, startScroll = 0;
+    // Drag-to-scroll (v2 — с порогом)
+    let isDown = false, isDragging = false, startX = 0, startScroll = 0;
+
     scroller.addEventListener("mousedown", (e) => {
         isDown = true;
-        scroller.classList.add("dragging");
+        isDragging = false;
         startX = e.pageX;
         startScroll = scroller.scrollLeft;
     });
+
+    scroller.addEventListener("mousemove", (e) => {
+        if (!isDown) return;
+        const dx = e.pageX - startX;
+        if (!isDragging && Math.abs(dx) > 5) {
+            isDragging = true;
+            scroller.classList.add("dragging");
+        }
+        if (isDragging) {
+            e.preventDefault();
+            scroller.scrollLeft = startScroll - dx;
+        }
+    });
+
     const stopDrag = () => {
         isDown = false;
+        isDragging = false;
         scroller.classList.remove("dragging");
     };
     scroller.addEventListener("mouseleave", stopDrag);
