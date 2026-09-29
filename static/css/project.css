@@ -93,7 +93,10 @@
 
 /* Architecture */
 .architecture-img {
+    display: block;
+    max-width: 620px;
     width: 100%;
+    margin: 0 auto;
     border-radius: 10px;
     cursor: zoom-in;
     box-shadow: 0 2px 12px rgba(0,0,0,.06);

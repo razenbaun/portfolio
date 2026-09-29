@@ -88,24 +88,18 @@ PROJECT = {
          "caption": "Запуск демо в IntelliJ IDEA: 4 датасета, вывод метрик в консоль"},
     ],
 
+    "benchmark_columns": ["Датасет", "Модель", "MAE", "sMAPE"],
     "benchmarks": [
-        {"dataset": "Passengers (monthly)", "model": "SARIMA(1,0,1)(1,0,1)₁₂",
-         "mae": "21.9", "smape": "5.6%", "best": True},
-        {"dataset": "Passengers (monthly)", "model": "AutoSARIMA",
-         "mae": "461.7", "smape": "58.5%"},
-        {"dataset": "Passengers (monthly)", "model": "Prophet",
-         "mae": "52.9",  "smape": "16%"},
-        {"dataset": "Births (daily)", "model": "SARIMA(1,0,1)(1,0,1)₇",
-         "mae": "5.4", "smape": "16%", "best": True},
-        {"dataset": "Births (daily)", "model": "AutoSARIMA",
-         "mae": "32.1", "smape": "54.5%"},
-        {"dataset": "Births (daily)", "model": "Prophet",
-         "mae": "8.3", "smape": "19%"},
+        {"cells": ["Passengers (monthly)", "SARIMA(1,0,1)(1,0,1)₁₂", "21.9", "5.6%"], "best": True},
+        {"cells": ["Passengers (monthly)", "AutoSARIMA", "461.7", "58.5%"]},
+        {"cells": ["Passengers (monthly)", "Prophet", "52.9", "16%"]},
+        {"cells": ["Births (daily)", "SARIMA(1,0,1)(1,0,1)₇", "5.4", "16%"], "best": True},
+        {"cells": ["Births (daily)", "AutoSARIMA", "32.1", "54.5%"]},
+        {"cells": ["Births (daily)", "Prophet", "8.3", "19%"]},
     ],
     "benchmark_note": (
         "AutoSARIMA проиграл ручной настройке на коротких зашумлённых рядах — "
-        "классический пример переобучения при переборе по AICc. Это подтверждает, "
-        "что автоподбор не всегда лучше экспертной настройки сезонного периода."
+        "классический пример переобучения при переборе по AICc."
     ),
 
     "tech": ["Java 11", "Maven", "Apache Commons Math 3.6.1",

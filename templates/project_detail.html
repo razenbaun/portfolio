@@ -126,19 +126,17 @@
             <table class="benchmarks-table">
                 <thead>
                     <tr>
-                        <th>Датасет</th>
-                        <th>Модель</th>
-                        <th>MAE</th>
-                        <th>sMAPE</th>
+                        {% for col in project.benchmark_columns %}
+                            <th>{{ col }}</th>
+                        {% endfor %}
                     </tr>
                 </thead>
                 <tbody>
                     {% for row in project.benchmarks %}
                     <tr class="{% if row.best %}best-row{% endif %}">
-                        <td>{{ row.dataset }}</td>
-                        <td>{{ row.model }}</td>
-                        <td>{{ row.mae }}</td>
-                        <td>{{ row.smape }}</td>
+                        {% for value in row["cells"] %}
+                            <td>{{ value }}</td>
+                        {% endfor %}
                     </tr>
                     {% endfor %}
                 </tbody>
