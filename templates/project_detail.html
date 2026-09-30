@@ -170,6 +170,36 @@
     </section>
     {% endif %}
 
+    <!-- ===== API ENDPOINTS ===== -->
+    {% if project.endpoints %}
+    <section class="project-section">
+        <h2>Основные эндпоинты API</h2>
+        <div class="table-wrap">
+            <table class="benchmarks-table endpoints-table">
+                <thead>
+                    <tr>
+                        <th>Метод</th>
+                        <th>Путь</th>
+                        <th>Назначение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for e in project.endpoints %}
+                    <tr>
+                        <td><span class="method method-{{ e.method | lower }}">{{ e.method }}</span></td>
+                        <td><code>{{ e.path }}</code></td>
+                        <td>{{ e.desc }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% if project.endpoints_note %}
+            <p class="benchmark-note">{{ project.endpoints_note }}</p>
+        {% endif %}
+    </section>
+    {% endif %}
+
     <!-- ===== СТЕК ===== -->
     {% if project.tech %}
     <section class="project-section">
