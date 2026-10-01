@@ -17,7 +17,7 @@
             <p class="resume-lead">
                 Обучаю ML-модели для компьютерного зрения и прогнозирования временных рядов.
                 Разрабатываю backend-сервисы на FastAPI и Flask,
-                Интересуюсь проектированием баз данных и архитектурой REST API.
+                интересуюсь проектированием баз данных и архитектурой REST API.
             </p>
         </div>
         <img class="resume-avatar" src="{{ url_for('static', filename='images/avatar.jpg') }}" alt="Александр Петрачков">
@@ -88,23 +88,23 @@
         </div>
     </section>
 
-    <section class="resume-section">
-        <h2>Ключевые проекты</h2>
-        <div class="resume-projects">
-            {% for p in projects %}
-            <a class="resume-project-card" href="{{ url_for('project_detail', slug=p.slug) }}">
-                <div class="resume-project-header">
-                    <h3>{{ p.title }}</h3>
-                    <span class="resume-project-arrow">→</span>
-                </div>
-                <p>{{ p.short_description }}</p>
-                <div class="chips chips-small">
-                    {% for t in p.tech[:4] %}<span class="chip">{{ t }}</span>{% endfor %}
-                </div>
-            </a>
-            {% endfor %}
-        </div>
-    </section>
+<!--    <section class="resume-section">-->
+<!--        <h2>Ключевые проекты</h2>-->
+<!--        <div class="resume-projects">-->
+<!--            {% for p in projects %}-->
+<!--            <a class="resume-project-card" href="{{ url_for('project_detail', slug=p.slug) }}">-->
+<!--                <div class="resume-project-header">-->
+<!--                    <h3>{{ p.title }}</h3>-->
+<!--                    <span class="resume-project-arrow">→</span>-->
+<!--                </div>-->
+<!--                <p>{{ p.short_description }}</p>-->
+<!--                <div class="chips chips-small">-->
+<!--                    {% for t in p.tech[:4] %}<span class="chip">{{ t }}</span>{% endfor %}-->
+<!--                </div>-->
+<!--            </a>-->
+<!--            {% endfor %}-->
+<!--        </div>-->
+<!--    </section>-->
 
     <section class="resume-section">
         <h2>Образование</h2>
