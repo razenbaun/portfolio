@@ -1,5 +1,14 @@
 CERTIFICATES = [
     {
+        "title": "Сертификат Яндекс Лицея",
+        "issuer": "Яндекс Лицей",
+        "level": None,
+        "valid_until": None,
+        "image": None,
+        "verify_url": "https://lms.yandex.ru/certificate/check/",
+        "code": "200131584",
+    },
+    {
         "title": "SQL",
         "issuer": "SQL ACADEMY",
         "level": None,
@@ -61,15 +70,6 @@ CERTIFICATES = [
         "image": "images/certificates/stepik-certificate-73-d37b362.png",
         "verify_url": "https://stepik.org/cert/2252600",
         "code": None,
-    },
-    {
-        "title": "Сертификат Яндекс Лицея",
-        "issuer": "Яндекс Лицей",
-        "level": None,
-        "valid_until": None,
-        "image": "images/certificates/yandex_lyceum.png",
-        "verify_url": "https://lms.yandex.ru/certificate/check/",
-        "code": "200131584",
     },
     {
         "title": "SQL: Теория и практика",

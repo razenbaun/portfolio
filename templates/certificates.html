@@ -8,7 +8,7 @@
     <div class="h-scroll">
         {% for cert in certificates %}
         <div class="card cert-card">
-            <img src="{{ url_for('static', filename=cert.image) }}" alt="{{ cert.title }}">
+            {% if cert.image %}<img src="{{ url_for('static', filename=cert.image) }}" alt="{{ cert.title }}">{% endif %}
             <h3>{{ cert.title }}</h3>
             <p>{{ cert.issuer }}</p>
             {% if cert.code %}<p>Код: {{ cert.code }}</p>{% endif %}
