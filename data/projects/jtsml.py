@@ -1,6 +1,6 @@
 PROJECT = {
     "slug": "jtsml",
-    "title": "JTSML — библиотека прогнозирования временных рядов",
+    "title": "JTSML - библиотека прогнозирования временных рядов",
     "short_description": (
         "Расширяемая Java-библиотека: 7 моделей прогнозирования, "
         "AutoARIMA/AutoSARIMA по AICc, оптимизация гиперпараметров, "
@@ -21,12 +21,12 @@ PROJECT = {
     "problem": (
         "На Python и R есть statsmodels, pmdarima, Prophet, forecast. "
         "На Java целостного решения нет: разработчику приходится либо писать "
-        "ARIMA с нуля, либо вызывать внешние скрипты — это долго и неудобно."
+        "ARIMA с нуля, либо вызывать внешние скрипты - это долго и неудобно."
     ),
     "solution": (
         "JTSML закрывает пробел: единый интерфейс TimeSeriesModel, автоподбор "
         "порядков по AICc, оптимизация гиперпараметров, визуализация и адаптер "
-        "к Prophet — всё в одной Maven-зависимости."
+        "к Prophet - всё в одной Maven-зависимости."
     ),
 
     "features": [
@@ -41,9 +41,9 @@ PROJECT = {
         {"icon": "🔌", "title": "Prophet-адаптер",
          "text": "Прозрачный вызов Python-скрипта через ProcessBuilder"},
         {"icon": "💾", "title": "Экспорт / импорт моделей",
-         "text": "Java-сериализация: обучение один раз — прогнозы многократно"},
+         "text": "Java-сериализация: обучение один раз - прогнозы многократно"},
         {"icon": "🧩", "title": "Fluent API",
-         "text": "Весь цикл анализа — от загрузки данных до графика — одной цепочкой вызовов"},
+         "text": "Весь цикл анализа - от загрузки данных до графика - одной цепочкой вызовов"},
         {"icon": "🧪", "title": "Тесты",
          "text": "JUnit 5: покрытие ключевых моделей и оптимизатора"},
     ],
@@ -77,13 +77,13 @@ PROJECT = {
         {"src": "images/projects/jtsml/correlogram_passengers.png",
          "caption": "Коррелограмма исходного ряда авиапассажиров"},
         {"src": "images/projects/jtsml/correlogram_passengers_diff.png",
-         "caption": "Коррелограмма после первых разностей — ряд становится стационарным"},
+         "caption": "Коррелограмма после первых разностей - ряд становится стационарным"},
         {"src": "images/projects/jtsml/forecast_passengers.png",
          "caption": "Сравнение SARIMA, AutoSARIMA и Prophet на ряде авиапассажиров"},
         {"src": "images/projects/jtsml/correlogram_births.png",
          "caption": "Коррелограмма ежедневного ряда рождений (1959)"},
         {"src": "images/projects/jtsml/forecast_births.png",
-         "caption": "Сравнение моделей на ряде рождений — AutoSARIMA переобучается"},
+         "caption": "Сравнение моделей на ряде рождений - AutoSARIMA переобучается"},
         {"src": "images/projects/jtsml/idea_demo.png",
          "caption": "Запуск демо в IntelliJ IDEA: 4 датасета, вывод метрик в консоль"},
     ],
@@ -105,7 +105,7 @@ PROJECT = {
         {"cells": ["Births (daily)", "Prophet", "8.3", "19%"]},
     ],
     "benchmark_note": (
-        "AutoSARIMA проиграл ручной настройке на коротких зашумлённых рядах — "
+        "AutoSARIMA проиграл ручной настройке на коротких зашумлённых рядах - "
         "классический пример переобучения при переборе по AICc."
     ),
 
@@ -124,7 +124,7 @@ PROJECT = {
         {"status": "done",    "text": "Оптимизация гиперпараметров (grid + random)"},
         {"status": "done",    "text": "Визуализация: графики прогнозов и коррелограммы"},
         {"status": "done",    "text": "Публикация в Maven Central"},
-        {"status": "planned", "text": "Holt-Winters — сезонный ETS"},
+        {"status": "planned", "text": "Holt-Winters - сезонный ETS"},
         {"status": "planned", "text": "REST-обёртка для вызова прогнозов по сети"},
         {"status": "planned", "text": "Экспорт моделей в JSON (межъязыковой обмен)"},
     ],

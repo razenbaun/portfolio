@@ -23,22 +23,22 @@ PROJECT = {
         "хранит историю заявок и автоматически синхронизирует статус."
     ),
     "solution": (
-        "Спроектирована иерархия Campus → Classroom → Place → Device с "
+        "Спроектирована иерархия Campus -> Classroom -> Place -> Device с "
         "привязкой заявок (Problem) к устройствам и пользователям. FastAPI "
-        "предоставляет REST API, Tortoise ORM — асинхронную работу с PostgreSQL. "
+        "предоставляет REST API, Tortoise ORM - асинхронную работу с PostgreSQL. "
         "Сигналы (post_save/post_delete) автоматически обновляют статус устройства "
         "при изменении его активных заявок."
     ),
 
     "features": [
         {"icon": "🏛️", "title": "6 связанных сущностей",
-         "text": "Campus → Classroom → Place → Device → Problem, а также User. FK, reverse relations, каскадные удаления."},
+         "text": "Campus -> Classroom -> Place -> Device -> Problem, а также User, каскадные удаления."},
         {"icon": "⚡", "title": "AsyncIO-стек",
          "text": "FastAPI + Tortoise ORM + asyncpg: неблокирующие запросы к Postgres."},
         {"icon": "🔐", "title": "Аутентификация",
          "text": "bcrypt-хеширование паролей, восстановление по email через SMTP + BackgroundTasks."},
         {"icon": "🧩", "title": "Signals и транзакции",
-         "text": "post_save/post_delete на Problem автоматически синхронизируют статус Device. Удаление Place с устройствами — в одной транзакции."},
+         "text": "post_save/post_delete на Problem автоматически синхронизируют статус Device. Удаление Place с устройствами - в одной транзакции."},
         {"icon": "✅", "title": "Валидация на уровне API",
          "text": "Уникальные координаты места в аудитории, проверка существования FK, unique login/email."},
         {"icon": "📚", "title": "Auto-Swagger",
@@ -75,8 +75,8 @@ PROJECT = {
 
     "architecture_image": "images/projects/campus-api/architecture.png",
     "architecture_note": (
-        "Клиент → FastAPI-роутеры (campus, classrooms, places, devices, users, problems) "
-        "→ Tortoise ORM → PostgreSQL. Сигналы на Problem автоматически обновляют "
+        "Клиент -> FastAPI-роутеры (campus, classrooms, places, devices, users, problems) "
+        "-> Tortoise ORM -> PostgreSQL. Сигналы на Problem автоматически обновляют "
         "статус Device. BackgroundTasks отправляют email при восстановлении пароля."
     ),
 
@@ -130,7 +130,7 @@ PROJECT = {
 
     "sources": [
         {"label": "GitHub репозиторий", "url": "https://github.com/razenbaun/API_v_1"},
-        {"label": "FastAPI — документация", "url": "https://fastapi.tiangolo.com"},
-        {"label": "Tortoise ORM — документация", "url": "https://tortoise.github.io"},
+        {"label": "FastAPI - документация", "url": "https://fastapi.tiangolo.com"},
+        {"label": "Tortoise ORM - документация", "url": "https://tortoise.github.io"},
     ],
 }
